@@ -1,3 +1,4 @@
+// 自动化测试
 import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';

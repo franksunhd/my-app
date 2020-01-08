@@ -8,14 +8,15 @@ function formatUser(user) {
     return user.name + ',你今年' + user.age + '岁了';
 }
 
+// 调用格式化函数
 function getGreeting(user) {
     if (user) {
         return formatUser(user);
     }
-
     return <h1>hello, frank sun</h1>
 }
 
+// 向 class 组件中添加局部的state
 class Clock extends React.Component {
     // 构造函数
     constructor(props) {
@@ -39,20 +40,24 @@ class Clock extends React.Component {
 
     // 设置时间
     tick() {
+        // 修改状态
         this.setState({
             date: new Date()
-        })
+        });
     }
 
-    // 点击函数
+    // 打印函数
     handleClick() {
         console.log(this.state.date.getTime());
+        document.getElementById('btn').remove();
     }
 
+    // 打印this指针
     clickBtn() {
         console.log(this)
     }
 
+    // 渲染函数
     render() {
         return (
             <div>
@@ -68,6 +73,7 @@ class Clock extends React.Component {
     }
 }
 
+// 根节点渲染函数
 function App() {
     const name = '孙思研';
     const user = {
