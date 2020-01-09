@@ -163,6 +163,62 @@ class Greeting extends React.Component {
     }
 }
 
+function LoginButton(props) {
+    return (
+        <button onClick={props.onClick}>
+            Login
+        </button>
+    );
+}
+
+function LogoutButton(props) {
+    return (
+        <button onClick={props.onClick}>
+            Logout
+        </button>
+    );
+}
+
+// 元素变量
+class LoginControl extends React.Component {
+    // 构造函数
+    constructor(props) {
+        super(props);
+        // 函数绑定this
+        this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
+        this.state = {
+            isLoggedIn: false
+        }
+    }
+
+    handleLoginClick() {
+        this.setState({isLoggedIn: true});
+    }
+
+    handleLogoutClick() {
+        this.setState({isLoggedIn: false});
+    }
+
+    // 渲染函数
+    render() {
+        const isLoggedIn = this.state.isLoggedIn;
+        let button;
+        if (isLoggedIn) {
+            button = <LogoutButton onClick={this.handleLogoutClick}/>
+        } else {
+            button = <LoginButton onClick={this.handleLoginClick}/>
+        }
+
+        return (
+            <div>
+                <div>{this.state.isLoggedIn ? 'true' : 'false'}</div>
+                {button}
+            </div>
+        )
+    }
+}
+
 // 根节点渲染函数
 function App() {
     const name = '孙思研';
@@ -201,6 +257,9 @@ function App() {
 
             {/*条件渲染*/}
             <Greeting/>
+
+            {/* 元素变量*/}
+            <LoginControl/>
         </div>
     );
 }
