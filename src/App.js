@@ -163,6 +163,7 @@ class Greeting extends React.Component {
     }
 }
 
+// 登录按钮
 function LoginButton(props) {
     return (
         <button onClick={props.onClick}>
@@ -171,6 +172,7 @@ function LoginButton(props) {
     );
 }
 
+// 退出登录
 function LogoutButton(props) {
     return (
         <button onClick={props.onClick}>
@@ -219,6 +221,24 @@ class LoginControl extends React.Component {
     }
 }
 
+// 与运算符
+function Mailbox(props) {
+    const unread = props.unread;
+    return (
+        <div>
+            <hr/>
+            {/*在 JavaScript 中，true && expression 总是会返回 expression, 而 false && expression 总是会返回 false*/}
+            <h1>Hello!</h1>
+            {
+                unread.length > 0 && <h2>
+                    You have {unread.length} unread message!
+                </h2>
+            }
+            <hr/>
+        </div>
+    )
+}
+
 // 根节点渲染函数
 function App() {
     const name = '孙思研';
@@ -227,7 +247,7 @@ function App() {
         age: '18',
         head: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K"
     };
-
+    const messages = ['React', 'Re: React', 'Re:Re: React', 'Angular'];
     return (
         <div className="App">
             {/*在JSX中嵌入表达式*/}
@@ -260,6 +280,9 @@ function App() {
 
             {/* 元素变量*/}
             <LoginControl/>
+
+            {/*  与运算符  */}
+            <Mailbox unread={messages}/>
         </div>
     );
 }
