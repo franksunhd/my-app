@@ -49,7 +49,6 @@ class Clock extends React.Component {
     // 打印函数
     handleClick() {
         console.log(this.state.date.getTime());
-        document.getElementById('btn').remove();
     }
 
     // 打印this指针
@@ -66,8 +65,99 @@ class Clock extends React.Component {
                 <h1>现在时间: <span>{this.state.date.getTime()}</span></h1>
 
                 <button onClick={this.handleClick}>点击打印</button>
-                <br/><br/>
+                <hr/>
                 <button onClick={() => this.clickBtn()}>打印this</button>
+            </div>
+        )
+    }
+}
+
+// 实现自增
+class ReactDOM extends React.Component {
+    // 构造函数
+    constructor(props) {
+        super(props);
+        this.state = {
+            num: 0
+        }
+    }
+
+    // 自增函数
+    add() {
+        this.setState({
+            num: this.state.num + 1
+        });
+    }
+
+    // 渲染函数
+    render() {
+        return (
+            <div>
+                <div className="numBox">{this.state.num}</div>
+                <button onClick={() => this.add()}>增加</button>
+                <hr/>
+            </div>
+        )
+    }
+}
+
+// 实现开关灯
+class Toggle extends React.Component {
+    // 构造函数
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false, // 默认关灯
+        };
+        // 绑定this
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    // 函数改变状态
+    handleClick() {
+        this.setState(state => ({
+                isOpen: !state.isOpen
+            }
+        ));
+    }
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.handleClick}>开/关</button>
+                <div className={this.state.isOpen ? 'a' : 'b'}>{this.state.isOpen ? '开启模式' : '关闭模式'}</div>
+                <hr/>
+            </div>
+        )
+    }
+}
+
+// 条件渲染
+class Greeting extends React.Component {
+    // 构造函数
+    constructor(props) {
+        super(props);
+        this.state = {
+            isTrue: false, // 默认加载组件
+        };
+        // 绑定this
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState(state => ({
+                isTrue: !state.isTrue
+            }
+        ));
+    }
+
+    // 渲染函数
+    render() {
+        return (
+            <div>
+                <button onClick={this.handleClick}>点击切换组件</button>
+                <div>{getGreeting(this.state.isTrue ? {name: '张三', age: '20'} : null)}</div>
+                <hr/>
             </div>
         )
     }
@@ -84,19 +174,33 @@ function App() {
 
     return (
         <div className="App">
+            {/*在JSX中嵌入表达式*/}
             <p>在JSX中嵌入表达式</p>
             <h1>我的名字叫 {name}</h1>
 
+            {/*使用函数表达式*/}
             <h1>Hello, {formatUser(user)}</h1>
-
             <hr/>
 
             <p>{getGreeting(user)}</p>
             <div tabIndex="0">{getGreeting()}</div>
 
+            {/*使用表达式*/}
             <img className="headImg" src={user.head} alt=""/>
 
+            {/*点击按钮*/}
             <Clock/>
+
+            {/*使用类的方式构建组件*/}
+            <ReactDOM/>
+            <ReactDOM/>
+            <ReactDOM/>
+
+            {/*实现开关灯*/}
+            <Toggle/>
+
+            {/*条件渲染*/}
+            <Greeting/>
         </div>
     );
 }
