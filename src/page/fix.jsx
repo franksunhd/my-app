@@ -1,12 +1,12 @@
 // 格式化函数
 import React from "react";
 
-export function formatUser(user) {
+function formatUser(user) {
     return user.name + ',你今年' + user.age + '岁了';
 }
 
 // 调用格式化函数
-export function getGreeting(user) {
+function getGreeting(user) {
     if (user) {
         return formatUser(user);
     }
@@ -14,7 +14,7 @@ export function getGreeting(user) {
 }
 
 // 向 class 组件中添加局部的state
-export class Clock extends React.Component {
+class Clock extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);
@@ -67,7 +67,7 @@ export class Clock extends React.Component {
 }
 
 // 实现自增
-export class ReactDOM extends React.Component {
+class ReactDOM extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);
@@ -94,7 +94,7 @@ export class ReactDOM extends React.Component {
 }
 
 // 实现开关灯
-export class Toggle extends React.Component {
+class Toggle extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);
@@ -121,7 +121,7 @@ export class Toggle extends React.Component {
 }
 
 // 条件渲染
-export class Greeting extends React.Component {
+class Greeting extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);
@@ -166,7 +166,7 @@ function LogoutButton(props) {
 }
 
 // 元素变量
-export class LoginControl extends React.Component {
+class LoginControl extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);
@@ -204,7 +204,7 @@ export class LoginControl extends React.Component {
 }
 
 // 与运算符
-export function Mailbox(props) {
+function Mailbox(props) {
     const unread = props.unread;
     return (
         <div>
@@ -238,7 +238,7 @@ function WarningProps(props) {
 }
 
 // 阻止组件渲染
-export class Pages extends React.Component {
+class Pages extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);
@@ -266,7 +266,7 @@ export class Pages extends React.Component {
 }
 
 // 渲染列表
-export function List(props) {
+function List(props) {
     const list = props.list;
     const listItem = list.map((item, index) => {
         // key 只是在兄弟节点之间必须唯一
@@ -278,7 +278,7 @@ export function List(props) {
 }
 
 // 表单
-export class NameForm extends React.Component {
+class NameForm extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);

@@ -1,18 +1,17 @@
-// 引入React
 import React, {Component} from "react";
 
-class Home extends Component {
+class Header extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <div>
-                <h1>111</h1>
+            <div className="headerBox">
+                <h1>React Header</h1>
             </div>
         )
     }
 }
 
-export default Home;
+export default Header;
