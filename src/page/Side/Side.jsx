@@ -1,17 +1,19 @@
 import React, {Component} from "react";
 import menuList from "./menu";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 // 获取导航
 function MenuList(props) {
     const list = props.list;
-    const listItem = list.map((item, index) => {
-        return <li key={item.id}>
-            <Link to={item.url}>{item.label}</Link>
-        </li>
+    const listItem = list.map((item) => {
+        return <div key={item.id}>
+            <NavLink className="navMenu" activeClassName="is_active" to={item.url}>
+                {item.label}
+            </NavLink>
+        </div>
     });
     return (
-        <ul>{listItem}</ul>
+        <div className="sideMenu">{listItem}</div>
     );
 }
 
@@ -19,11 +21,15 @@ function MenuList(props) {
 class Side extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            currentIndex: ''
+        };
     }
 
     render() {
         return (
             <div className="sideBox">
+                {/*渲染列表 menuList 菜单数据 */}
                 <MenuList list={menuList}/>
             </div>
         )

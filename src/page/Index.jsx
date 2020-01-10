@@ -5,6 +5,7 @@ import Side from "./Side/Side";
 class Index extends Component {
     constructor(props) {
         super(props);
+        this.state = {};
     }
 
     render() {

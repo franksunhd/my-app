@@ -6,3 +6,20 @@
     bottom: 0;
     background-color: darkkhaki;
 }
+
+.navMenu {
+    width: 100%;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 50px;
+    text-align: center;
+}
+
+.sideMenu .navMenu.is_active {
+    background-color: #ddaacc;
+}
+
+.sideMenu .navMenu.is_active {
+    color: cornflowerblue;
+}

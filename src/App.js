@@ -5,7 +5,9 @@ import {HashRouter} from "react-router-dom";
 // 引入全局的css
 import './assets/css/index.css';
 import Index from './page/Index';
+// eslint-disable-next-line no-unused-vars
 import Fix from "./page/fix";
+// eslint-disable-next-line no-unused-vars
 import Home from "./page/Home/home";
 
 // 直接挂载到域名根目录
