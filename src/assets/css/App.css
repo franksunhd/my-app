@@ -24,6 +24,14 @@
     margin-top: 10px;
 }
 
+
+.appName {
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+    position: relative;
+}
+
 @keyframes rotate {
     0% {
         transform: rotate(0deg)
