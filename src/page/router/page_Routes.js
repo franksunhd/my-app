@@ -3,7 +3,7 @@ import React, {Component} from "react";
 // 定义Index
 import Index from "../Index";
 // Home
-import Home from "../Home/home";
+import Home from "../pages/Home/home";
 import {Route} from "react-router";
 
 const routes = [
@@ -17,4 +17,4 @@ function pageRoutes() {
     });
 }
 
-export default pageRoutes;
+export default routes;

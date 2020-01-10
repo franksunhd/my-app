@@ -15,7 +15,7 @@ class Index extends Component {
                 <Header/>
                 {/*导航*/}
                 <Side/>
-                <div className="contentBox">{this.props.children}</div>
+                {this.props.children}
             </div>
         )
     }

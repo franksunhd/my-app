@@ -27,6 +27,7 @@
 
 .appName {
     padding-left: 200px;
+    padding-top: 60px;
     display: flex;
     flex-flow: column;
     min-height: 100vh;
