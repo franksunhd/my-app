@@ -21,10 +21,7 @@ class Clock extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);
-        this.state = {
-            date: new Date()
-        };
-
+        this.state = {date: new Date()};
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -77,9 +74,7 @@ class ReactDOM extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);
-        this.state = {
-            num: 0
-        }
+        this.state = {num: 0}
     }
 
     // 自增函数
@@ -106,19 +101,15 @@ class Toggle extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);
-        this.state = {
-            isOpen: false, // 默认关灯
-        };
-        // 绑定this
-        this.handleClick = this.handleClick.bind(this);
+        this.state = {isOpen: false}; // 默认关灯
+        this.handleClick = this.handleClick.bind(this); // 绑定this
     }
 
     // 函数改变状态
     handleClick() {
         this.setState(state => ({
-                isOpen: !state.isOpen
-            }
-        ));
+            isOpen: !state.isOpen
+        }));
     }
 
     render() {
@@ -137,18 +128,14 @@ class Greeting extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);
-        this.state = {
-            isTrue: false, // 默认加载组件
-        };
-        // 绑定this
-        this.handleClick = this.handleClick.bind(this);
+        this.state = {isTrue: false}; // 默认加载组件
+        this.handleClick = this.handleClick.bind(this); // 绑定this
     }
 
     handleClick() {
         this.setState(state => ({
-                isTrue: !state.isTrue
-            }
-        ));
+            isTrue: !state.isTrue
+        }));
     }
 
     // 渲染函数
@@ -186,12 +173,10 @@ class LoginControl extends React.Component {
     // 构造函数
     constructor(props) {
         super(props);
+        this.state = {isLoggedIn: false};
         // 函数绑定this
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleLogoutClick = this.handleLogoutClick.bind(this);
-        this.state = {
-            isLoggedIn: false
-        }
     }
 
     handleLoginClick() {
@@ -227,7 +212,10 @@ function Mailbox(props) {
     return (
         <div>
             <hr/>
-            {/*在 JavaScript 中，true && expression 总是会返回 expression, 而 false && expression 总是会返回 false*/}
+            {/*
+                在 JavaScript 中，true && expression 总是会返回 expression,
+                而 false && expression 总是会返回 false
+            */}
             <h1>Hello!</h1>
             {
                 unread.length > 0 && <h2>
@@ -239,6 +227,99 @@ function Mailbox(props) {
     )
 }
 
+// 阻止组件渲染 ---- 使用render函数返回null
+function WarningProps(props) {
+    // warn 为 false 返回null 否则返回 标签
+    if (!props.warn) {
+        return null;
+    }
+    return (
+        <h1 className="warnName">
+            warning!
+        </h1>
+    )
+}
+
+// 阻止组件渲染
+class Pages extends React.Component {
+    // 构造函数
+    constructor(props) {
+        super(props);
+        this.state = {showWarning: true};
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    // 点击改变状态
+    handleClick() {
+        this.setState(state => ({
+            showWarning: !state.showWarning
+        }));
+    }
+
+    render() {
+        return (
+            <div>
+                <WarningProps warn={this.state.showWarning}/>
+                <button onClick={this.handleClick}>
+                    {this.state.showWarning ? 'Hide' : 'Show'}
+                </button>
+            </div>
+        )
+    }
+}
+
+// 渲染列表
+function List(props) {
+    const list = props.list;
+    const listItem = list.map((item, index) => {
+        // key 只是在兄弟节点之间必须唯一
+        return <li key={item.toString()}>{item}</li>
+    });
+    return (
+        <ul>{listItem}</ul>
+    )
+}
+
+// 表单
+class NameForm extends React.Component {
+    // 构造函数
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
+        // 绑定this
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    // input change事件
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+
+    // 点击提交按钮
+    handleSubmit(event) {
+        // 阻止默认事件
+        event.preventDefault();
+        alert('value:' + this.state.value);
+    }
+
+    render() {
+        return (
+            <div>
+                <hr/>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        姓名:
+                        <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                    </label>
+                    <input type="submit" value="提交"/>
+                </form>
+                <hr/>
+            </div>
+        )
+    }
+}
+
 // 根节点渲染函数
 function App() {
     const name = '孙思研';
@@ -248,6 +329,11 @@ function App() {
         head: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K"
     };
     const messages = ['React', 'Re: React', 'Re:Re: React', 'Angular'];
+    // 渲染列表
+    const num = [1, 2, 3, 4, 5];
+    const doubles = num.map(num => num * 2);
+    console.log(doubles)
+
     return (
         <div className="App">
             {/*在JSX中嵌入表达式*/}
@@ -275,14 +361,23 @@ function App() {
             {/*实现开关灯*/}
             <Toggle/>
 
-            {/*条件渲染*/}
+            {/*条件渲染 --- 点击切换组件*/}
             <Greeting/>
 
-            {/* 元素变量*/}
+            {/*条件渲染 --- 元素变量*/}
             <LoginControl/>
 
-            {/*  与运算符  */}
+            {/*与运算符*/}
             <Mailbox unread={messages}/>
+
+            {/*组织组件渲染*/}
+            <Pages/>
+
+            {/* 渲染列表 */}
+            <List list={doubles}/>
+
+            {/*表单*/}
+            <NameForm/>
         </div>
     );
 }
