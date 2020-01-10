@@ -1,7 +1,7 @@
 // 引入React
 import React, {Component} from "react";
 
-class Home extends Component {
+class Senior extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -10,10 +10,10 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <h1>首页</h1>
+                <h1>高级版</h1>
             </div>
         )
     }
 }
 
-export default Home;
+export default Senior;

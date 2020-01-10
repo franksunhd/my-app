@@ -1,20 +1,17 @@
-import React, {Component} from "react";
-
-// 定义Index
-import Index from "../Index";
 // Home
 import Home from "../pages/Home/home";
-import {Route} from "react-router";
+// Basic
+import Basic from "../pages/Basic/basic"
+// Advance
+import Advance from "../pages/Advance/advance";
+// Senior
+import Senior from "../pages/Senior/Senior"
 
-const routes = [
-    {path: '/index', component: Index},
-    {path: '/index/basic', component: Home}
+const routesList = [
+    {path: '/index/home', component: Home},
+    {path: '/index/basic', component: Basic},
+    {path: '/index/advance', component: Advance},
+    {path: '/index/Senior.jsx', component: Senior}
 ];
 
-function pageRoutes() {
-    routes.map(item => {
-        return <Route key={item.path} path={item.path} component={item.component}/>
-    });
-}
-
-export default routes;
+export default routesList;

@@ -22,9 +22,7 @@ function MenuList(props) {
 class Side extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            currentIndex: ''
-        };
+        this.state = {};
     }
 
     render() {

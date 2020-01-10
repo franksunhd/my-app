@@ -2,7 +2,7 @@ const menuList = [
     {
         id: 'menu_1',
         label: '首页',
-        url: '/index'
+        url: '/index/home'
     },
     {
         id: 'menu_2',
