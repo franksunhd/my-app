@@ -7,7 +7,6 @@ import {Redirect, Route, Switch} from "react-router";
 import {BrowserRouter, HashRouter} from "react-router-dom";
 // 引入路由文件
 // eslint-disable-next-line no-unused-vars
-import Fix from "../fix"
 import Index from "../Index";
 // Home
 import Home from "../pages/Home/home";
