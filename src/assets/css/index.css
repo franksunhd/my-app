@@ -6,3 +6,5 @@
 @import "header.css";
 /*导航样式*/
 @import "side.css";
+/*基础版样式*/
+@import "basic.css";

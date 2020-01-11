@@ -7,7 +7,19 @@ const menuList = [
     {
         id: 'menu_2',
         label: '基础版',
-        url: '/index/basic'
+        url: '/index/basic',
+        children:[
+            {
+                id: 'menu_2_1',
+                label: '核心概念 上',
+                url: '/index/basic/core_1',
+            },
+            {
+                id: 'menu_2_2',
+                label: '核心概念 下',
+                url: '/index/basic/core_2',
+            }
+        ]
     },
     {
         id: 'menu_3',
