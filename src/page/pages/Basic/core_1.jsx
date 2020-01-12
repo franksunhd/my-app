@@ -1,10 +1,11 @@
 import React from "react";
+import TitleText from "../common/titleText";
 
 // 1. 在JSX中使用表达式
 function JsxFun(props) {
     return (
         <div>
-            <div className="titleText">1. 在JSX中嵌入表达式</div>
+            <TitleText title="1. 在JSX中嵌入表达式"/>
             <h1>我的名字叫 {props.name}</h1>
         </div>
     )
@@ -28,11 +29,11 @@ function getGreeting(user) {
 function JsxFun2(props) {
     return (
         <div>
-            <div className="titleText">2. 使用函数表达式</div>
+            <TitleText title="2. 使用函数表达式"/>
             <h1>Hello, {formatUser(props.user)}</h1>
-            <div className="titleText">2.1 传参</div>
+            <TitleText title="2.1 传参"/>
             <h1>{getGreeting(props.user)}</h1>
-            <div className="titleText">2.2 不传参</div>
+            <TitleText title="2.2 不传参"/>
             <div tabIndex="0">{getGreeting()}</div>
         </div>
     )
@@ -42,7 +43,7 @@ function JsxFun2(props) {
 function HeadImg(props) {
     return (
         <div>
-            <div className="titleText">3. 使用表达式</div>
+            <TitleText title="3. 使用表达式"/>
             <img className="headImg" src={props.src} alt=""/>
         </div>
     )
@@ -89,7 +90,7 @@ class Clock extends React.Component {
     render() {
         return (
             <div>
-                <div className="titleText">4. 向 class 组件中添加局部的state</div>
+                <TitleText title="4. 向 class 组件中添加局部的state"/>
                 <h1>现在时间: {this.state.date.toLocaleTimeString()}</h1>
                 <h1>现在时间: <span>{this.state.date.getTime()}</span></h1>
                 <button onClick={this.handleClick}>点击打印</button>
@@ -130,7 +131,7 @@ class ReactDOM extends React.Component {
 function ReactDomFun() {
     return (
         <div>
-            <div className="titleText">5. 实现自增</div>
+            <TitleText title="5. 实现自增"/>
             <ReactDOM/>
             <ReactDOM/>
             <ReactDOM/>
@@ -157,7 +158,7 @@ class Toggle extends React.Component {
     render() {
         return (
             <div>
-                <div className="titleText">6. 实现开关灯</div>
+                <TitleText title="6. 实现开关灯"/>
                 <button onClick={this.handleClick}>开/关</button>
                 <div className={this.state.isOpen ? 'a' : 'b'}>{this.state.isOpen ? '开启模式' : '关闭模式'}</div>
             </div>
@@ -184,7 +185,7 @@ class Greeting extends React.Component {
     render() {
         return (
             <div>
-                <div className="titleText">7. 条件渲染 --- 点击切换组件</div>
+                <TitleText title="7. 条件渲染 --- 点击切换组件"/>
                 <button onClick={this.handleClick}>点击切换组件</button>
                 <div>{getGreeting(this.state.isTrue ? {name: '张三', age: '20'} : null)}</div>
             </div>
@@ -241,7 +242,7 @@ class LoginControl extends React.Component {
 
         return (
             <div>
-                <div className="titleText">8. 条件渲染 --- 元素变量</div>
+                <TitleText title="8. 条件渲染 --- 元素变量"/>
                 <div>{this.state.isLoggedIn ? 'true' : 'false'}</div>
                 {button}
             </div>
@@ -255,7 +256,7 @@ function Mailbox(props) {
     const unread = props.unread;
     return (
         <div>
-            <div className="titleText">9. 与运算符</div>
+            <TitleText title="9. 与运算符"/>
             {/*
                 在 JavaScript 中，true && expression 总是会返回 expression,
                 而 false && expression 总是会返回 false
@@ -302,7 +303,7 @@ class Pages extends React.Component {
     render() {
         return (
             <div>
-                <div className="titleText">10. 阻止组件渲染</div>
+                <TitleText title="10. 阻止组件渲染"/>
                 <WarningProps warn={this.state.showWarning}/>
                 <button onClick={this.handleClick}>
                     {this.state.showWarning ? 'Hide' : 'Show'}
@@ -321,7 +322,7 @@ function List(props) {
     });
     return (
         <div>
-            <div className="titleText">11. 渲染列表</div>
+            <TitleText title="11. 渲染列表"/>
             <ul>{listItem}</ul>
         </div>
     )
@@ -360,7 +361,7 @@ class NameForm extends React.Component {
     render() {
         return (
             <div>
-                <div className="titleText">12. 表单</div>
+                <TitleText title="12. 表单"/>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         姓名：

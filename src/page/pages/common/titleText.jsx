@@ -1,6 +1,6 @@
 import React from "react";
 
-class titleText extends React.Component {
+class TitleText extends React.Component {
     // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props);
@@ -13,4 +13,4 @@ class titleText extends React.Component {
     }
 }
 
-export default titleText;
+export default TitleText;
