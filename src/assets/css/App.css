@@ -1,3 +1,9 @@
 .padding20 {
     padding: 20px;
 }
+
+.titleText {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: silver;
+}

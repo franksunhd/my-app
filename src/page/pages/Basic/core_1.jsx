@@ -1,6 +1,16 @@
-// 格式化函数
 import React from "react";
 
+// 1. 在JSX中使用表达式
+function JsxFun(props) {
+    return (
+        <div>
+            <div className="titleText">1. 在JSX中嵌入表达式</div>
+            <h1>我的名字叫 {props.name}</h1>
+        </div>
+    )
+}
+
+// 格式化函数
 function formatUser(user) {
     return user.name + ',你今年' + user.age + '岁了';
 }
@@ -13,7 +23,32 @@ function getGreeting(user) {
     return <h1>hello, frank sun</h1>
 }
 
-// 向 class 组件中添加局部的state
+// 2. 使用函数表达式
+// eslint-disable-next-line no-unused-vars
+function JsxFun2(props) {
+    return (
+        <div>
+            <div className="titleText">2. 使用函数表达式</div>
+            <h1>Hello, {formatUser(props.user)}</h1>
+            <div className="titleText">2.1 传参</div>
+            <h1>{getGreeting(props.user)}</h1>
+            <div className="titleText">2.2 不传参</div>
+            <div tabIndex="0">{getGreeting()}</div>
+        </div>
+    )
+}
+
+// 3. 使用表达式
+function HeadImg(props) {
+    return (
+        <div>
+            <div className="titleText">3. 使用表达式</div>
+            <img className="headImg" src={props.src} alt=""/>
+        </div>
+    )
+}
+
+// 4. 向 class 组件中添加局部的state
 class Clock extends React.Component {
     // 构造函数
     constructor(props) {
@@ -54,10 +89,9 @@ class Clock extends React.Component {
     render() {
         return (
             <div>
-                <div>Hello World!</div>
+                <div className="titleText">4. 向 class 组件中添加局部的state</div>
                 <h1>现在时间: {this.state.date.toLocaleTimeString()}</h1>
                 <h1>现在时间: <span>{this.state.date.getTime()}</span></h1>
-
                 <button onClick={this.handleClick}>点击打印</button>
                 <hr/>
                 <button onClick={() => this.clickBtn()}>打印this</button>
@@ -66,7 +100,7 @@ class Clock extends React.Component {
     }
 }
 
-// 实现自增
+// 5. 实现自增
 class ReactDOM extends React.Component {
     // 构造函数
     constructor(props) {
@@ -87,13 +121,24 @@ class ReactDOM extends React.Component {
             <div>
                 <div className="numBox">{this.state.num}</div>
                 <button onClick={() => this.add()}>增加</button>
-                <hr/>
             </div>
         )
     }
 }
 
-// 实现开关灯
+// 实现自增组件
+function ReactDomFun() {
+    return (
+        <div>
+            <div className="titleText">5. 实现自增</div>
+            <ReactDOM/>
+            <ReactDOM/>
+            <ReactDOM/>
+        </div>
+    )
+}
+
+// 6. 实现开关灯
 class Toggle extends React.Component {
     // 构造函数
     constructor(props) {
@@ -112,15 +157,15 @@ class Toggle extends React.Component {
     render() {
         return (
             <div>
+                <div className="titleText">6. 实现开关灯</div>
                 <button onClick={this.handleClick}>开/关</button>
                 <div className={this.state.isOpen ? 'a' : 'b'}>{this.state.isOpen ? '开启模式' : '关闭模式'}</div>
-                <hr/>
             </div>
         )
     }
 }
 
-// 条件渲染
+// 7. 条件渲染 --- 点击切换组件
 class Greeting extends React.Component {
     // 构造函数
     constructor(props) {
@@ -139,9 +184,9 @@ class Greeting extends React.Component {
     render() {
         return (
             <div>
+                <div className="titleText">7. 条件渲染 --- 点击切换组件</div>
                 <button onClick={this.handleClick}>点击切换组件</button>
                 <div>{getGreeting(this.state.isTrue ? {name: '张三', age: '20'} : null)}</div>
-                <hr/>
             </div>
         )
     }
@@ -165,7 +210,7 @@ function LogoutButton(props) {
     );
 }
 
-// 元素变量
+// 8. 条件渲染 --- 元素变量
 class LoginControl extends React.Component {
     // 构造函数
     constructor(props) {
@@ -196,6 +241,7 @@ class LoginControl extends React.Component {
 
         return (
             <div>
+                <div className="titleText">8. 条件渲染 --- 元素变量</div>
                 <div>{this.state.isLoggedIn ? 'true' : 'false'}</div>
                 {button}
             </div>
@@ -203,12 +249,13 @@ class LoginControl extends React.Component {
     }
 }
 
-// 与运算符
+// 9. 与运算符
 function Mailbox(props) {
+    // 接收数组
     const unread = props.unread;
     return (
         <div>
-            <hr/>
+            <div className="titleText">9. 与运算符</div>
             {/*
                 在 JavaScript 中，true && expression 总是会返回 expression,
                 而 false && expression 总是会返回 false
@@ -219,12 +266,11 @@ function Mailbox(props) {
                     You have {unread.length} unread message!
                 </h2>
             }
-            <hr/>
         </div>
     )
 }
 
-// 阻止组件渲染 ---- 使用render函数返回null
+// 10. 阻止组件渲染 ---- 使用render函数返回null
 function WarningProps(props) {
     // warn 为 false 返回null 否则返回 标签
     if (!props.warn) {
@@ -237,7 +283,7 @@ function WarningProps(props) {
     )
 }
 
-// 阻止组件渲染
+// 10. 阻止组件渲染
 class Pages extends React.Component {
     // 构造函数
     constructor(props) {
@@ -256,6 +302,7 @@ class Pages extends React.Component {
     render() {
         return (
             <div>
+                <div className="titleText">10. 阻止组件渲染</div>
                 <WarningProps warn={this.state.showWarning}/>
                 <button onClick={this.handleClick}>
                     {this.state.showWarning ? 'Hide' : 'Show'}
@@ -265,7 +312,7 @@ class Pages extends React.Component {
     }
 }
 
-// 渲染列表
+// 11. 渲染列表
 function List(props) {
     const list = props.list;
     const listItem = list.map((item, index) => {
@@ -273,11 +320,14 @@ function List(props) {
         return <li key={item.toString()}>{item}</li>
     });
     return (
-        <ul>{listItem}</ul>
+        <div>
+            <div className="titleText">11. 渲染列表</div>
+            <ul>{listItem}</ul>
+        </div>
     )
 }
 
-// 表单
+// 12. 表单
 class NameForm extends React.Component {
     // 构造函数
     constructor(props) {
@@ -310,7 +360,7 @@ class NameForm extends React.Component {
     render() {
         return (
             <div>
-                <hr/>
+                <div className="titleText">12. 表单</div>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         姓名：
@@ -320,15 +370,13 @@ class NameForm extends React.Component {
                         地址：
                         <textarea value={this.state.value} onChange={this.handleChange} cols="30" rows="10"/>
                     </label>
-                    <input type="submit" value="提交"/>
-                    <hr/>
                     <select value={this.state.fruit} onChange={this.changeFruit}>
                         <option value="orange">橘子</option>
                         <option value="apple">苹果</option>
                         <option value="pear">梨</option>
                     </select>
+                    <input type="submit" value="提交"/>
                 </form>
-                <hr/>
             </div>
         )
     }
@@ -350,47 +398,40 @@ function Core_1() {
 
     return (
         <div className="padding20">
-            {/*在JSX中嵌入表达式*/}
-            <p>在JSX中嵌入表达式</p>
-            <h1>我的名字叫 {name}</h1>
+            {/* 1. 在JSX中嵌入表达式 */}
+            <JsxFun name={name}/>
 
-            {/*使用函数表达式*/}
-            <h1>Hello, {formatUser(user)}</h1>
-            <hr/>
+            {/* 2. 使用函数表达式 */}
+            <JsxFun2 user={user}/>
 
-            <p>{getGreeting(user)}</p>
-            <div tabIndex="0">{getGreeting()}</div>
+            {/* 3. 使用表达式 */}
+            <HeadImg src={user.head}/>
 
-            {/*使用表达式*/}
-            <img className="headImg" src={user.head} alt=""/>
-
-            {/*点击按钮*/}
+            {/* 4. 点击按钮 */}
             <Clock/>
 
-            {/*使用类的方式构建组件*/}
-            <ReactDOM/>
-            <ReactDOM/>
-            <ReactDOM/>
+            {/* 5. 使用类的方式构建组件 */}
+            <ReactDomFun/>
 
-            {/*实现开关灯*/}
+            {/* 6. 实现开关灯 */}
             <Toggle/>
 
-            {/*条件渲染 --- 点击切换组件*/}
+            {/* 7. 条件渲染 --- 点击切换组件 */}
             <Greeting/>
 
-            {/*条件渲染 --- 元素变量*/}
+            {/* 8. 条件渲染 --- 元素变量 */}
             <LoginControl/>
 
-            {/*与运算符*/}
+            {/* 9. 与运算符 */}
             <Mailbox unread={messages}/>
 
-            {/*组织组件渲染*/}
+            {/* 10. 组织组件渲染 */}
             <Pages/>
 
-            {/* 渲染列表 */}
+            {/* 11. 渲染列表 */}
             <List list={doubles}/>
 
-            {/*表单*/}
+            {/* 12. 表单 */}
             <NameForm/>
         </div>
     )
