@@ -22,3 +22,41 @@
 .minMenu.is_active {
     background-color: coral;
 }
+
+/* Core_1 */
+.headImg {
+    width: 50px;
+    animation: rotate 2s linear infinite;
+}
+
+.a {
+    color: brown;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.b {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.numBox {
+    margin: 10px 0;
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Core_2 */
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(180deg)
+    }
+}

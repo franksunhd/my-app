@@ -349,7 +349,7 @@ function Core_1() {
     console.log(doubles);
 
     return (
-        <div>
+        <div className="padding20">
             {/*在JSX中嵌入表达式*/}
             <p>在JSX中嵌入表达式</p>
             <h1>我的名字叫 {name}</h1>
