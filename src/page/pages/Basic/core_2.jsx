@@ -197,6 +197,78 @@ class TemperatureTogether extends Component {
     }
 }
 
+// 5. 组合 --- 包含关系
+function GroupIncludeBox() {
+    return (
+        <div>
+            <TitleText title="5. 组合 --- 包含关系"/>
+            <GroupInclude color="red">
+                <h1>标题</h1>
+                <div>this is title!</div>
+            </GroupInclude>
+        </div>
+    )
+}
+
+function GroupInclude(props) {
+    // 使用 props.children
+    return (
+        <div className={'color_' + props.color}>
+            {props.children}
+        </div>
+    )
+}
+
+// 6. 组合 --- 包含关系
+function SplitPane(props) {
+    return (
+        <div>
+            <TitleText title="6. 组合 --- 包含关系"/>
+            <div>
+                {props.left}
+            </div>
+            <div>
+                {props.right}
+            </div>
+            <div>
+                {props.children}
+            </div>
+        </div>
+    )
+}
+
+// 7. 组合 --- 特例关系
+class SignUpDialog extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {text: ''};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    // 输入框的change事件
+    handleChange(e) {
+        this.setState({text: e.target.value});
+    }
+
+    // 按钮点击事件
+    handleClick() {
+        alert('welcome to react,' + this.state.text);
+    }
+
+    render() {
+        return (
+            <div>
+                <TitleText title="7. 组合 --- 特例关系"/>
+                <SplitPane left={<div>标题</div>} right={<div>描述</div>}>
+                    <input type="text" value={this.state.text} onChange={this.handleChange}/>
+                    <button onClick={this.handleClick}>点击获取值</button>
+                </SplitPane>
+            </div>
+        )
+    }
+}
+
 // 主函数
 function Core_2() {
     return (
@@ -212,6 +284,15 @@ function Core_2() {
 
             {/* 4. 摄氏温度和华氏温度 --- 关联 */}
             <TemperatureTogether/>
+
+            {/* 5. 组合 --- 包含关系 */}
+            <GroupIncludeBox/>
+
+            {/* 6. 组合 --- 包含关系 */}
+            <SplitPane left={<h1>我是左边</h1>} right={<h1>我是右边</h1>}/>
+
+            {/* 7. 组合 --- 特例关系 */}
+            <SignUpDialog/>
         </div>
     )
 }

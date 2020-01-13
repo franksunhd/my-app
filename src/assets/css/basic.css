@@ -51,6 +51,11 @@
 }
 
 /* Core_2 */
+.color_red {
+    color: red;
+    border: 1px solid royalblue;
+}
+
 
 @keyframes rotate {
     0% {
