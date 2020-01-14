@@ -7,6 +7,15 @@ const scaleNames = {
     f: 'Fahrenheit(华氏温度)'
 };
 
+const PRODUCTS = [
+    {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
+    {category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball"},
+    {category: "Sporting Goods", price: "$29.99", stocked: false, name: "Basketball"},
+    {category: "Electronics", price: "$99.99", stocked: true, name: "iPod Touch"},
+    {category: "Electronics", price: "$399.99", stocked: false, name: "iPhone 5"},
+    {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
+];
+
 // 1. 状态提升 --- 静态判断水是否沸腾
 class StatusUp extends Component {
     // 构造函数
@@ -223,7 +232,6 @@ function GroupInclude(props) {
 function SplitPane(props) {
     return (
         <div>
-            <TitleText title="6. 组合 --- 包含关系"/>
             <div>
                 {props.left}
             </div>
@@ -269,6 +277,159 @@ class SignUpDialog extends Component {
     }
 }
 
+// 8. 模糊搜索
+class FilterableProductTable extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            filterText: '',
+            inStockOnly: false
+        };
+        this.handleChangeFilterText = this.handleChangeFilterText.bind(this);
+        this.handleChangeInStock = this.handleChangeInStock.bind(this);
+    }
+
+    // 输入框值改变
+    handleChangeFilterText(filterText) {
+        this.setState({filterText: filterText});
+    }
+
+    // 复选框选中事件
+    handleChangeInStock(inStockOnly) {
+        this.setState({inStockOnly: inStockOnly});
+    }
+
+    render() {
+        return (
+            <div>
+                <TitleText title="8. 模糊搜索"/>
+                {/* 搜索组件 */}
+                <SearchBar
+                    filterText={this.state.filterText}
+                    inStockOnly={this.state.inStockOnly}
+                    onFilterTextChange={this.handleChangeFilterText}
+                    onInStockChange={this.handleChangeInStock}/>
+                {/* 列表组件 */}
+                <ProductTable
+                    products={this.props.product}
+                    filterText={this.state.filterText}
+                    inStockOnly={this.state.inStockOnly}/>
+            </div>
+        );
+    }
+}
+
+// 搜索组件
+class SearchBar extends Component {
+    constructor(props) {
+        super(props);
+        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+        this.handleInStockChange = this.handleInStockChange.bind(this);
+    }
+
+    // 输入框的值改变的函数
+    handleFilterTextChange(e) {
+        this.props.onFilterTextChange(e.target.value)
+    }
+
+    // 复选框的值改变
+    handleInStockChange(e) {
+        this.props.onInStockChange(e.target.checked);
+    }
+
+    render() {
+        return (
+            <form>
+                <div>
+                    <input
+                        onChange={this.handleFilterTextChange}
+                        value={this.props.filterText}
+                        placeholder="search..."
+                        type="text"/>
+                </div>
+                <div>
+                    <input
+                        checked={this.props.inStockOnly}
+                        onChange={this.handleInStockChange}
+                        type="checkbox"/>
+                    Only show products in stock
+                </div>
+            </form>
+        )
+    }
+}
+
+// 列表组件
+class ProductTable extends Component {
+    render() {
+        let filterText = this.props.filterText;
+        let inStockOnly = this.props.inStockOnly;
+
+        const rows = [];
+        let lastCategory = null;
+        this.props.products.forEach((item) => {
+            // 没有匹配到输入的过滤值返回
+            if (item.name.indexOf(filterText) === -1 && item.price.indexOf(filterText) === -1) {
+                return;
+            }
+            // 过滤 stocked 为 false 的数据
+            if (inStockOnly && !item.stocked) {
+                return;
+            }
+            if (item.category !== lastCategory) {
+                rows.push(
+                    <ProductCategoryRow category={item.category} key={item.category}/>
+                )
+            }
+
+            rows.push(
+                <ProductRow
+                    product={item}
+                    key={item.name}
+                />
+            );
+            lastCategory = item.category;
+
+        });
+
+        return (
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>{rows}</tbody>
+            </table>
+        )
+    }
+}
+
+class ProductCategoryRow extends Component {
+    render() {
+        let category = this.props.category;
+        return (
+            <tr>
+                <td colSpan="2" style={{fontWeight:'bold',fontSize:'16px'}}>{category}</td>
+            </tr>
+        )
+    }
+}
+
+class ProductRow extends Component {
+    render() {
+        let product = this.props.product;
+
+        return (
+            <tr>
+                <td>{product.stocked ? product.name : <span style={{color: 'red'}}>{product.name}</span>}</td>
+                <td>{product.stocked ? product.price : <span style={{color: 'red'}}>{product.price}</span>}</td>
+            </tr>
+        )
+    }
+}
+
 // 主函数
 function Core_2() {
     return (
@@ -289,10 +450,16 @@ function Core_2() {
             <GroupIncludeBox/>
 
             {/* 6. 组合 --- 包含关系 */}
-            <SplitPane left={<h1>我是左边</h1>} right={<h1>我是右边</h1>}/>
+            <div>
+                <TitleText title="6. 组合 --- 包含关系"/>
+                <SplitPane left={<h1>我是左边</h1>} right={<h1>我是右边</h1>}/>
+            </div>
 
             {/* 7. 组合 --- 特例关系 */}
             <SignUpDialog/>
+
+            {/* 8. 模糊搜索 */}
+            <FilterableProductTable product={PRODUCTS}/>
         </div>
     )
 }
