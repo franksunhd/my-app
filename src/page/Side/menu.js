@@ -21,13 +21,13 @@ const menuList = [
             },
             {
                 id: 'menu_2_3',
-                label: '高级指引 上',
+                label: '高级指引',
                 url: '/index/basic/senior_1',
             },
             {
                 id: 'menu_2_4',
-                label: '高级指引 下',
-                url: '/index/basic/senior_2',
+                label: 'Hook',
+                url: '/index/basic/hook',
             }
         ]
     },
