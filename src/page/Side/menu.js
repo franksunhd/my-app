@@ -34,7 +34,14 @@ const menuList = [
     {
         id: 'menu_3',
         label: '进阶版',
-        url: '/index/advance'
+        url: '/index/advance',
+        children: [
+            {
+                id: 'menu_3',
+                label: 'ant Design的使用',
+                url: '/index/advance/ant_1',
+            }
+        ]
     },
     {
         id: 'menu_4',

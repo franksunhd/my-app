@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import TitleText from "../common/titleText";
 
 // 1. useState
@@ -7,6 +7,12 @@ function Example() {
 
     // 声明一个新的叫做 "count" 的 state变量
     const [count, setCount] = useState(0);
+
+    // 2. useEffect
+    useEffect(() => {
+        // 使用浏览器的 API 更新页面标题
+        document.title = `You clicked ${count} times`;
+    });
 
     return (
         <div>

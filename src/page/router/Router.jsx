@@ -20,10 +20,12 @@ import Senior from "../pages/Senior/Senior";
 import Core_1 from "../pages/Basic/core_1";
 // 核心概念 下
 import Core_2 from "../pages/Basic/core_2";
-// 高级指引 上
+// 高级指引
 import Senior_1 from "../pages/Basic/senior_1";
-// 高级指引 下
+// Hook
 import Hook from "../pages/Basic/Hook";
+// ant
+import ANT_1 from "../pages/Advance/ant_1";
 
 // 直接挂载到域名根目录
 export const ROUTE_BASE_NAME = process.env.BASE_NAME || '';
@@ -40,7 +42,8 @@ class RouterLink extends Component {
                     <Route path="/index/basic/core_2" component={Core_2}/>
                     <Route path="/index/basic/senior_1" component={Senior_1}/>
                     <Route path="/index/basic/hook" component={Hook}/>
-                    <Route exact path="/index/advance" component={Advance}/>
+                    <Route path="/index/advance" component={Advance}/>
+                    <Route path="/index/advance/ant_1" component={ANT_1}/>
                     <Route exact path="/index/senior" component={Senior}/>
                 </div>
             </HashRouter>
