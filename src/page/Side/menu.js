@@ -8,7 +8,7 @@ const menuList = [
         id: 'menu_2',
         label: '基础版',
         url: '/index/basic',
-        children:[
+        children: [
             {
                 id: 'menu_2_1',
                 label: '核心概念 上',
@@ -18,6 +18,16 @@ const menuList = [
                 id: 'menu_2_2',
                 label: '核心概念 下',
                 url: '/index/basic/core_2',
+            },
+            {
+                id: 'menu_2_3',
+                label: '高级指引 上',
+                url: '/index/basic/senior_1',
+            },
+            {
+                id: 'menu_2_4',
+                label: '高级指引 下',
+                url: '/index/basic/senior_2',
             }
         ]
     },
