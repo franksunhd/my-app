@@ -2,8 +2,20 @@
     padding: 20px;
 }
 
+.marginRight10 {
+    margin-right: 10px;
+}
+
+.marginBottom10 {
+    margin-bottom: 10px;
+}
+
 .titleText {
     font-size: 20px;
     font-weight: bold;
+    background-color: silver;
+}
+
+.bgGray {
     background-color: silver;
 }
