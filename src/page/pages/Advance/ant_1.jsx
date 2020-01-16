@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, Icon, Menu, Dropdown} from "antd";
+import {Button, Icon, Menu, Dropdown, Typography} from "antd";
 import TitleText from "../common/titleText";
 
 const menuList = [
@@ -129,11 +129,93 @@ class ButtonBox extends Component {
     }
 }
 
+// 2. Icon图标
+class IconBox extends Component {
+    render() {
+        return (
+            <div>
+                <TitleText title="2. Icon 图标"/>
+                <div>
+                    <h3>基础用法</h3>
+                    <Icon type="home" style={{fontSize: "18px", marginRight: "10px"}} theme="filled"/>
+                    <Icon type="home" style={{fontSize: "18px", marginRight: "10px"}} theme="outlined"/>
+                    <Icon type="home" style={{fontSize: "18px", marginRight: "10px"}} theme="twoTone"/>
+                </div>
+                <div>
+                    <h3>多色图标</h3>
+                    {/* 支持自定义颜色 */}
+                    <Icon type="smile" style={{fontSize: "18px", marginRight: "10px"}} theme="twoTone"/>
+                    <Icon type="heart" style={{fontSize: "18px", marginRight: "10px"}} theme="twoTone"
+                          twoToneColor="#eb2f96"/>
+                    <Icon type="check-circle" style={{fontSize: "18px", marginRight: "10px"}} theme="twoTone"
+                          twoToneColor="#52c41a"/>
+                </div>
+            </div>
+        )
+    }
+}
+
+// 3. 排版
+class TypographyBox extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            strText: '这是默认文本...'
+        };
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(str) {
+        this.setState({strText: str});
+    };
+
+    render() {
+        const {Title, Paragraph} = Typography;
+
+        return (
+            <div>
+                <TitleText title="3. 排版"/>
+                <div>
+                    <h3>标题组件</h3>
+                    <Title level={1}>标题1</Title>
+                    <Title level={2}>标题2</Title>
+                    <Title level={3}>标题3</Title>
+                    <Title level={4}>标题4</Title>
+                </div>
+                <div>
+                    <h3>可交互</h3>
+                    {/* 可编辑 */}
+                    <Paragraph editable={{onChange: this.onChange}}>{this.state.strText}</Paragraph>
+                    {/* 可复制 */}
+                    <Paragraph copyable>复制这段文本</Paragraph>
+                    {/* 支持自定义复制内容 */}
+                    <Paragraph copyable={{text: 'Hello, Ant Design!'}}>您可复制这段文本</Paragraph>
+                    {/* 设置缩略行数 设置是否可展开 */}
+                    <Paragraph ellipsis={{rows: 2, expandable: true}}>
+                        Ant Design, a design language for background applications, is refined by Ant UED Team. Ant
+                        Design, a design language for background applications, is refined by Ant UED Team. Ant Design,
+                        a design language for background applications, is refined by Ant UED Team. Ant Design, a
+                        design language for background applications, is refined by Ant UED Team. Ant Design, a design
+                        language for background applications, is refined by Ant UED Team. Ant Design, a design
+                        language for background applications, is refined by Ant UED Team.
+                    </Paragraph>
+                </div>
+            </div>
+        )
+    }
+}
+
 function ANT_1() {
     return (
         <div className="padding20">
             {/* 1. 按钮的使用 */}
             <ButtonBox/>
+
+            {/* 2. Icon图标 */}
+            <IconBox/>
+
+            {/* 3. 排版 */}
+            <TypographyBox/>
         </div>
     )
 }
