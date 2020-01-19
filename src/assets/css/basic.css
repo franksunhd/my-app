@@ -66,6 +66,51 @@
     background-color: #00a0e9;
 }
 
+.LayoutBox .ant-layout-header,
+.LayoutBox .ant-layout-content,
+.LayoutBox .ant-layout-sider,
+.LayoutBox .ant-layout-footer {
+    color: #fff;
+}
+
+.LayoutBox .ant-layout-header {
+    padding: 0;
+    text-align: center;
+    background-color: #7dbcea;
+}
+
+.LayoutBox .ant-layout-content {
+    text-align: center;
+    line-height: 300px;
+    height: 300px;
+    background-color: rgba(16, 142, 233, 1);
+}
+
+.LayoutBox .ant-layout-sider {
+    height: 300px;
+    text-align: center;
+    line-height: 300px;
+    background-color: #3ba0e9;
+}
+
+.LayoutBox .ant-layout-footer {
+    text-align: center;
+    background-color: #7dbcea;
+}
+
+div.logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+}
+
+i.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+}
+
 
 @keyframes rotate {
     0% {
