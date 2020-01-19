@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, Icon, Menu, Dropdown, Typography} from "antd";
+import {Button, Icon, Menu, Dropdown, Typography, Row, Col} from "antd";
 import TitleText from "../common/titleText";
 
 const menuList = [
@@ -205,6 +205,53 @@ class TypographyBox extends Component {
     }
 }
 
+// 4. 栅格
+class GridBox extends Component {
+    render() {
+        return (
+            <div>
+                <TitleText title="4. 栅格"/>
+                <div>
+                    <h3>基础栅格</h3>
+                    <Row gutter={16} className="marginBottom10">
+                        <Col span={12}>
+                            <div className="light_blue">col-12</div>
+                        </Col>
+                        <Col span={12}>
+                            <div className="blueColor">col-12</div>
+                        </Col>
+                    </Row>
+                    <Row gutter={16} className="marginBottom10">
+                        <Col span={8}>
+                            <div className="light_blue">col-8</div>
+                        </Col>
+                        <Col span={8}>
+                            <div className="blueColor">col-8</div>
+                        </Col>
+                        <Col span={8}>
+                            <div className="light_blue">col-8</div>
+                        </Col>
+                    </Row>
+                    <Row gutter={16} className="marginBottom10">
+                        <Col span={6}>
+                            <div className="light_blue">col-6</div>
+                        </Col>
+                        <Col span={6}>
+                            <div className="blueColor">col-6</div>
+                        </Col>
+                        <Col span={6}>
+                            <div className="light_blue">col-6</div>
+                        </Col>
+                        <Col span={6}>
+                            <div className="blueColor">col-6</div>
+                        </Col>
+                    </Row>
+                </div>
+            </div>
+        )
+    }
+}
+
 function ANT_1() {
     return (
         <div className="padding20">
@@ -216,6 +263,9 @@ function ANT_1() {
 
             {/* 3. 排版 */}
             <TypographyBox/>
+
+            {/* 4. 栅格 */}
+            <GridBox/>
         </div>
     )
 }
