@@ -51,7 +51,14 @@ const menuList = [
     {
         id: 'menu_4',
         label: '高级版',
-        url: '/index/senior'
+        url: '/index/senior',
+        children: [
+            {
+                id: 'menu_4_1',
+                label: 'Redux 1',
+                url: '/index/senior/redux_1',
+            }
+        ]
     },
 ];
 

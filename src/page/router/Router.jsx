@@ -28,6 +28,8 @@ import Hook from "../pages/Basic/Hook";
 import ANT_1 from "../pages/Advance/ant_1";
 // ant 2
 import ANT_2 from "../pages/Advance/ant_2";
+// Redux
+import Redux_1 from "../pages/Senior/redux_1";
 
 // 直接挂载到域名根目录
 export const ROUTE_BASE_NAME = process.env.BASE_NAME || '';
@@ -47,7 +49,8 @@ class RouterLink extends Component {
                     <Route path="/index/advance" component={Advance}/>
                     <Route path="/index/advance/ant_1" component={ANT_1}/>
                     <Route path="/index/advance/ant_2" component={ANT_2}/>
-                    <Route exact path="/index/senior" component={Senior}/>
+                    <Route path="/index/senior" component={Senior}/>
+                    <Route path="/index/senior/redux_1" component={Redux_1}/>
                 </div>
             </HashRouter>
         )
