@@ -247,6 +247,41 @@ class GridBox extends Component {
                         </Col>
                     </Row>
                 </div>
+                <div>
+                    <h3>区块间隔</h3>
+                    <Row gutter={16} className="marginBottom10">
+                        <Col span={8}>
+                            <div className="light_blue">col-8</div>
+                        </Col>
+                        <Col span={8} offset={8}>
+                            <div className="blueColor">col-8</div>
+                        </Col>
+                    </Row>
+                    <Row gutter={16} className="marginBottom10">
+                        <Col span={6} offset={6}>
+                            <div className="light_blue">col-6 col-offset-6</div>
+                        </Col>
+                        <Col span={6} offset={6}>
+                            <div className="blueColor">col-6 col-offset-6</div>
+                        </Col>
+                    </Row>
+                    <Row gutter={16} className="marginBottom10">
+                        <Col span={12} offset={6}>
+                            <div className="light_blue">col-12 col-offset-6</div>
+                        </Col>
+                    </Row>
+                </div>
+                <div>
+                    <h3>左右偏移 -- 列偏移</h3>
+                    <Row gutter={16} className="marginBottom10">
+                        <Col span={8}>
+                            <div className="blueColor">col-8</div>
+                        </Col>
+                        <Col span={8} push={3}>
+                            <div className="light_blue">col-8 col-push-3</div>
+                        </Col>
+                    </Row>
+                </div>
             </div>
         )
     }
