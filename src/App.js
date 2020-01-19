@@ -15,11 +15,15 @@ import './assets/css/index.css';
 function App() {
     return (
         /*
+         * ConfigProvider: 全局化配置
+         * locale: 语言包设置
+         * prefixCls: 设置统一样式前缀 默认是 ant
+         *
          * autoInsertSpaceInButton
          *      true:按钮文字中间有空格
          *      false:按钮中间没有空格
          */
-        <ConfigProvider locale={zh_CN} autoInsertSpaceInButton={false}>
+        <ConfigProvider locale={zh_CN} prefixCls="ant" autoInsertSpaceInButton={false}>
             <RouterLink/>
         </ConfigProvider>
     );
