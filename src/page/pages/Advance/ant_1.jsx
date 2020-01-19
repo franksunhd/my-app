@@ -327,7 +327,7 @@ class LayoutBox extends Component {
 }
 
 // 6. 菜单布局
-class SiderDemo extends Component {
+class SiDerDemo extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -406,7 +406,7 @@ function ANT_1() {
             <LayoutBox/>
 
             {/* 6. 菜单布局 */}
-            <SiderDemo/>
+            <SiDerDemo/>
         </div>
     )
 }
