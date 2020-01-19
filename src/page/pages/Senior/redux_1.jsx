@@ -6,11 +6,11 @@ import TitleText from "../common/titleText";
 
 function counter(state = 0, action) {
     switch (action.type) {
-        case 'INCREMENT':
+        case 'INCREMENT': // 自增
             return state + 1;
-        case 'DECREMENT':
+        case 'DECREMENT': // 自减
             return state - 1;
-        default:
+        default: // 原样输出
             return state;
     }
 }
