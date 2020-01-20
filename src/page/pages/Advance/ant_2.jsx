@@ -99,6 +99,23 @@ class BreadcrumbBox extends Component {
 
 // 3. Input输入框
 class InputBox extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            str: ''
+        };
+        this.pressEnter = this.pressEnter.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    pressEnter() {
+        alert('您输入的值为----' + this.state.str);
+    }
+
+    handleChange(e) {
+        this.setState({str: e.target.value});
+    }
+
     render() {
         return (
             <div>
@@ -115,7 +132,8 @@ class InputBox extends Component {
                 <div>
                     <h3>组合</h3>
                     <Input.Group>
-                        <Input className=""/>
+                        <Input allowClear onChange={event => this.handleChange(event)}
+                               onPressEnter={this.pressEnter}/>
                     </Input.Group>
                 </div>
             </div>
