@@ -2,7 +2,7 @@
 import React, {Component} from "react";
 // eslint-disable-next-line no-unused-vars
 import TitleText from "../common/titleText";
-import {Breadcrumb, Icon, Menu} from "antd";
+import {Breadcrumb, Icon, Menu, Input} from "antd";
 
 // 1. Affix 固钉
 class AffixBox extends Component {
@@ -97,6 +97,32 @@ class BreadcrumbBox extends Component {
     }
 }
 
+// 3. Input输入框
+class InputBox extends Component {
+    render() {
+        return (
+            <div>
+                <TitleText title="3. Input输入框"/>
+                <div>
+                    <h3>基础使用</h3>
+                    <Input placeholder="请输入账户名"/>
+                </div>
+                <div>
+                    <h3>前置后置</h3>
+                    <Input className="marginBottom10" addonBefore="http://" addonAfter=".com"/>
+                    <Input addonBefore={<Icon type="home"/>}/>
+                </div>
+                <div>
+                    <h3>组合</h3>
+                    <Input.Group>
+                        <Input className=""/>
+                    </Input.Group>
+                </div>
+            </div>
+        )
+    }
+}
+
 // 主渲染函数
 function ANT_2() {
     return (
@@ -106,6 +132,9 @@ function ANT_2() {
 
             {/* 2. Breadcrumb 面包屑 */}
             <BreadcrumbBox/>
+
+            {/* 3. Input输入框 */}
+            <InputBox/>
         </div>
     )
 }
